@@ -114,7 +114,7 @@ function RemoveLoadMore(){
         gallery.classList.add("show-less");
     }
 }
-
+console.log("as");
 // SELECT CATEGORY (cafe, co-working, outside)
 function filterSelection(filter) {
     // active city

@@ -41,9 +41,7 @@
 		<div class="footer__copyright">
 			<p>
 				&copy; 							
-				<script type="text/javascript">
-					document.write(new Date().getFullYear());
-				</script> 
+				<?php echo date("Y"); ?>
 				<?php echo the_field('footer_copyright_name'); ?> 
 			</p>							
 		</div>

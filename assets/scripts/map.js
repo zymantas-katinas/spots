@@ -18,7 +18,7 @@ function initMap(location, zoomLevel) {
         styles: greyStyle,  
     }
     let map = new google.maps.Map(document.getElementById('map'), options);
-   
+
     //define marker 
     function addMarker(markerInfo) {   
         let marker = new google.maps.Marker({
@@ -68,9 +68,10 @@ function initMap(location, zoomLevel) {
 let selectImage = document.querySelectorAll(".spots-gallery__image");
 let imageId = 0;
 for( let i = 0; i< selectImage.length; i++){
+  
     selectImage[i].addEventListener('click',function() { 
         document.location='#map-anchor';
-        let imageId =  selectImage[i].getAttribute('id');
+        let imageId = selectImage[i].dataset.coords;
         let imageIdArray = imageId.split(', ');
         let imageIdLat = imageIdArray[1] * 1;
         let imageIdLng = imageIdArray[2] * 1;

@@ -39,7 +39,7 @@
 				the_row();
 				$image = get_sub_field('spot_image');
 				?>
-				<div class="spots-gallery__image <?php echo the_sub_field('city_name'); ?> <?php echo the_sub_field('spot_type'); ?>" id='<?php echo the_sub_field('location'); ?>'>		
+				<div class="spots-gallery__image <?php echo the_sub_field('city_name'); ?> <?php echo the_sub_field('spot_type'); ?>" data-coords='<?php echo the_sub_field('location'); ?>'>		
 					<img src="<?php echo esc_url($image['sizes']['spot']); ?>" alt="<?php the_sub_field('spot_heading'); ?>">
 					<div class="spots-gallery__text">
 						<h3><?php echo the_sub_field('spot_heading'); ?> </h3>
