@@ -55,9 +55,9 @@
 
 <!-- LOAD MORE ICON -->
 <div class="load-more">
-	<button class="load-more__button"> 
+	<div class="load-more__button"> 
 		<i class="<?php the_field('load_more_button'); ?> load-more__icon"></i>
-	</button>
+	</div>
 	<p>load-more</p>
 </div>	
 

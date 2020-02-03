@@ -9,10 +9,10 @@
 			while(have_rows('ml_marker_name_repeater')):
 				the_row();
 				?>
-				<button class="mapLegend__button">
+				<div class="mapLegend__button">
 					<i class="<?php the_sub_field('marker_icon')  ?> <?php the_sub_field('marker_color'); ?> "></i>
 					<h3><?php the_sub_field('marker_name') ?></h3>
-				</button>
+				</div>
 				<?php
 			endwhile;
 		endif;

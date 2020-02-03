@@ -26,7 +26,7 @@
 						while(have_rows('information_repeater')):
 						the_row();	
 						?>
-							<a href = "mailto: <?php echo the_sub_field('email'); ?>"><p> <?php echo the_sub_field('email'); ?></p></a>
+							<a href = "mailto:<?php echo the_sub_field('email'); ?>"><p> <?php echo the_sub_field('email'); ?></p></a>
 							<a href="https://www.google.com/maps?q=<?php echo the_sub_field('address'); ?>" target = _blank><p><?php echo the_sub_field('address'); ?></p></a>
 							<a href="tel:<?php echo the_sub_field('phone'); ?>"><p><?php echo the_sub_field('phone'); ?></p></a>
 						<?php
