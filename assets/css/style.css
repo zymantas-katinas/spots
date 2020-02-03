@@ -95,7 +95,7 @@ body {
   padding-top: 100px;
 }
 
-h1, h2, h3, h4, ul, li, p, a {
+h1, h2, h3, h4, .form-popup__send button, ul, li, p, a {
   font-family: 'Poppins';
   color: #222831;
   padding: 0;
@@ -127,7 +127,7 @@ h3 {
   font-weight: 600;
 }
 
-h4 {
+h4, .form-popup__send button {
   font-size: 0.875rem;
   font-weight: 400;
   text-transform: capitalize;
@@ -539,7 +539,7 @@ a:hover {
   padding: 2em;
 }
 
-.form-popup__info h4 {
+.form-popup__info h4, .form-popup__info .form-popup__send button, .form-popup__send .form-popup__info button {
   color: #a9aaac;
 }
 
@@ -619,16 +619,13 @@ a:hover {
   opacity: 0.5;
   -webkit-transition: opacity 0.3s ease-in-out;
   transition: opacity 0.3s ease-in-out;
+  color: #a9aaac;
 }
 
 .form-popup__send button:hover {
   opacity: 1;
   -webkit-transition-duration: .3s;
           transition-duration: .3s;
-}
-
-.form-popup__send button h4 {
-  color: #a9aaac;
 }
 
 .form-popup__send button br {
