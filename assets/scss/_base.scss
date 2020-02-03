@@ -1,0 +1,154 @@
+// RESET
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+	
+	@keyframes fadeIn {
+		from { opacity: 0; }
+		  to { opacity: 1; }
+	}
+}
+
+body {
+	margin: 0px;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.gm-style-pbc {   
+opacity: 0 !important;  // removes map default overlay
+}
+
+// VARIABLES
+
+$darkGrey: #222831;
+$lightGrey: #393e46;
+$lightestGrey: #a9aaac;
+$whiteGrey: rgb(237, 237, 237);
+$semiBold: 600;
+$light: 300;
+$regular: 400;
+$iconGreen: #8DD38D;
+$iconRed: #C46A6A;
+$iconBlue: #6B7EC1;
+
+// PLACEHOLDERS
+
+%icon {
+	cursor:pointer;
+	right: calc(50% - 1.5rem);
+	font-size: 3rem;
+	color: white;
+	opacity: 0.5;
+	transition: 0.4s ease-in-out;
+	&:hover {
+		opacity: 1;
+	}
+}
+
+%navbar {
+	padding: 30px 0;
+}
+
+%navbarList {
+	display: flex;
+	justify-content: space-around;
+	flex-direction: row;
+	padding: 0 80px;
+}
+
+%navbarItem {
+	cursor:pointer;
+	border-bottom: 0.15rem solid white;
+	transition-duration: .3s;
+	&:hover { 
+		border-bottom: 0.15rem solid $lightGrey;
+		text-shadow: 0px 0px 19px rgb(210, 210, 210);}
+}
+
+%heading {
+	text-align: center;
+	// margin: 150px auto 0;
+
+	& h3 {
+		font-size: 1.5rem;
+		text-transform: none;
+		margin-bottom: 90px;
+	}
+}
+
+.heading {
+	@extend %heading;
+}
+
+.section {
+	margin-top: 100px;
+	padding-top: 100px;
+}
+
+// TYPOGRAPHY 
+
+h1, h2, h3, h4, ul, li, p, a {
+	font-family: 'Poppins';
+	color: $darkGrey;
+	padding: 0;
+	margin: 0;
+	margin-block-start: 0;
+	margin-block-end: 0;
+	text-decoration: none;	
+	list-style: none;
+	text-overflow: ellipsis;
+}
+
+h1 { 
+	font-size: 3.25rem;
+	font-weight: $semiBold;
+	color: white;
+}
+
+h2 {
+	font-size: 1.1rem;
+	font-weight: $light;
+	color: white;
+}
+
+h3 {
+
+	text-transform: uppercase;
+	font-size: 1.125rem;
+	font-weight: $semiBold;
+	
+}
+
+h4 {
+	font-size: 0.875rem;
+	font-weight: $regular;
+	text-transform: capitalize;
+	color: $lightGrey;
+}
+
+p {
+	color: $lightGrey;
+	font-weight: $light;
+}
+
+button {
+	border: none;
+	outline: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.menu-a {
+	text-transform: uppercase;
+	font-size: 1.125rem;
+	font-weight: $semiBold;
+	color: white;
+}

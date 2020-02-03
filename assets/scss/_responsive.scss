@@ -1,0 +1,196 @@
+
+
+
+
+
+@media only screen and (max-width: 950px) {
+
+	// NAVBAR ===============================================	
+
+	.top-navbar {
+		justify-content: flex-end;
+		background-color:  rgba(255, 255, 255, 0.2);
+		padding: 20px 40px 20px;
+		&__list {
+			max-height: 1px;
+			display: block;
+			overflow: hidden;
+			text-align: center;
+			transition: 0.5s ease-in-out;
+			opacity: 0;
+		}
+		&__item {
+			margin-right: 0;
+			margin-top: 35px;
+		}		
+		&__burger {
+			display:block;
+			max-height: 15px;
+			overflow: hidden;
+		}
+		&__logo {
+			display: none;
+		}
+		&__menu {
+			width: 100%;
+		}		
+	}	
+
+	.menu-a {
+		font-size: 1.8rem;
+	}
+
+	// HERO SECTION ===============================================	
+
+	.hero {
+		h1 {
+			font-size: 2.3rem;
+			margin: 0 30px;
+		}
+		h2 {
+			margin-right: 0rem;
+			text-align: center;
+		}
+	}
+
+	// CITIES SECTION ===============================================
+
+	.cities { 
+		// margin-top: 50px;
+		&__row {
+			margin: 0 auto;
+		}
+		&__city {
+			width: 100%;
+			margin-bottom: 80px;
+		}
+		&__img {
+			margin: 0 auto;
+			 margin-bottom: 30px;	
+		}
+	}
+
+	// ABOUT ===============================================
+
+	.about {
+		padding: 5% 50px;
+	}
+
+	// GALLERY SECTION  ===============================================
+
+	.spots-gallery {
+		column-count: 2;
+		&__text{
+			h3 {
+				font-size: 1.8rem;
+			}
+		}
+	}
+
+	//MAP SECTION ===============================================
+
+	.mapLegend {
+		left: 0;
+   		width: 100%;
+ 		top: 110px;
+		& h3 {
+			font-size: 0.9rem;
+			margin: 15px;
+		}
+		& i { font-size: 1.4rem;}
+	}
+
+	// FOOTER SECTION ===============================================
+
+	.form-popup {
+		&__block {
+			flex-direction: column;
+		}
+		&__info {
+			width: 100%;
+			text-align: center;
+		}
+		&__inputs {
+			width: 100%;
+		}
+		&__input {
+			flex-direction: column;
+		}
+		&__close i {
+			color: $lightestGrey;
+		}
+	}
+
+	.footer {
+		&__column {
+		width: 50%;
+		text-align: center;
+		padding: 20px 20px 60px;
+		}
+		&__row {
+			justify-content: center;
+		}
+	}
+	
+} // end of max-width 950px
+
+@media only screen and (max-width: 500px) {
+
+	.container {
+		width: 100%;
+	}
+
+	// HERO HEADER ===============================================	
+
+	.hero { 
+		h1 {
+			font-size: 2rem;
+		}
+		h2 {
+			font-size: 1rem;
+			margin-right: 0rem;
+		}
+	}
+
+	// NAVBARS ===============================================
+
+	%navbarList {
+		padding: 0;
+		flex-direction: column;
+		h3 {
+			font-size: 1.5rem;
+			margin: 10px;
+			text-align: center;
+		}
+	}
+
+	// CITIES SECTION ===============================================
+
+	.spots-gallery {
+		column-count: 1;
+	}
+
+	//MAP SECTION ===============================================
+
+	.mapLegend {
+		& h3 {
+			font-size: 0.6rem;
+		}
+		& i { font-size: 1.3rem;}
+	}
+
+	// FOOTER SECTION ===============================================
+	
+	.form-popup__block {
+		margin: 5%;
+	}
+	.footer__column {
+		width: 100%;
+	}
+	.menu-a {
+		font-size: 1.5rem;
+	}
+}	// end of max-width 500px
+	
+
+
