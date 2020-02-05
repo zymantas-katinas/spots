@@ -18,29 +18,31 @@ function initMap(location, zoomLevel) {
         styles: greyStyle,  
     }
     let map = new google.maps.Map(document.getElementById('map'), options);
-
+    let lastWindow=null;
     //define marker 
+    
     function addMarker(markerInfo) {   
         let marker = new google.maps.Marker({
             position: markerInfo.coords,
             map: map,  
             icon: markerInfo.icon,
+            labelContent:markerInfo.labelContent,
         });      
         let infowindow = new google.maps.InfoWindow({
             content: markerInfo.content,       
         });
         // marker onclick
         marker.addListener('click', function() {         
-            let marker = new google.maps.Marker({
-                position: markerInfo.coords,
-                map: map,   
-            });            
-            infowindow.open(map, marker);
+            if (lastWindow) {
+                lastWindow.close();
+            }
+            infowindow.open(map, this);
+            lastWindow=infowindow;
             map.setZoom(16);
-            map.setCenter(marker.getPosition());                 
+            map.panTo(marker.getPosition());
+                 
         });
     }
-
     //loop add markers 
     for( let i=0; i < markers.length; i++) {
         addMarker(markers[i]);
@@ -50,39 +52,48 @@ function initMap(location, zoomLevel) {
     for(let i =0; i< markers.length; i++){
         let selectedContent = markers[i]['content'];
         let selectedLat = location.lat;
+        
         // console.log(selectedLat);
         if(selectedLat == markers[i]['coords'].lat) {
+
             let infowindow = new google.maps.InfoWindow({
-                content: selectedContent
-                });            
-            let mark = new google.maps.Marker({
-                position: location,
-                map: map,            
-            });
-            infowindow.open(map, mark);
+                content: selectedContent,
+                pixelOffset: new google.maps.Size(12,0)
+                });  
+
+            infowindow.setPosition(location);
+            infowindow.open(map);
+            lastWindow=infowindow;       
         }
     }    
+
+    // Go to map marker on Image Click
+    let selectImage = document.querySelectorAll(".spots-gallery__image");
+    let imageId = 0;
+    for( let i = 0; i< selectImage.length; i++){
+    
+        selectImage[i].addEventListener('click',function() { 
+            document.location='#map-anchor';
+            let imageId = selectImage[i].dataset.coords;
+            let imageIdArray = imageId.split(', ');
+            let imageIdLat = imageIdArray[1] * 1;
+            let imageIdLng = imageIdArray[2] * 1;
+            let imageCoords = {lat: imageIdLat, lng: imageIdLng};
+            for(let i =0; i< markers.length; i++){
+                if(imageCoords.lat == markers[i]['coords'].lat) {
+                    initMap(markers[i]['coords'], 15);                     
+                }           
+            };   
+        });
+    };
+
 } // end of initMap();
 
-// Go to map marker on Image Click
-let selectImage = document.querySelectorAll(".spots-gallery__image");
-let imageId = 0;
-for( let i = 0; i< selectImage.length; i++){
-  
-    selectImage[i].addEventListener('click',function() { 
-        document.location='#map-anchor';
-        let imageId = selectImage[i].dataset.coords;
-        let imageIdArray = imageId.split(', ');
-        let imageIdLat = imageIdArray[1] * 1;
-        let imageIdLng = imageIdArray[2] * 1;
-        let imageCoords = {lat: imageIdLat, lng: imageIdLng};
-        for(let i =0; i< markers.length; i++){
-            if(imageCoords.lat == markers[i]['coords'].lat) {
-                initMap(markers[i]['coords'], 15);                     
-            }           
-        };   
-    });
-};
+function hideAllInfoWindows(map) {
+    markers.forEach(function(marker) {
+      marker.infowindow.close(map, marker);
+   }); 
+ }
 
 // MY LOCATION
 var map, infoWindow;

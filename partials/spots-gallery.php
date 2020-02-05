@@ -65,18 +65,16 @@
 <?php 
 	$spot = get_field('add_location_repeater');
 	$ml = get_field('ml_marker_name_repeater');
-	$blue = wp_get_attachment_url( 224 );
-	$red = wp_get_attachment_url( 223 );
-	$green = wp_get_attachment_url( 222 );
+
 ?>
 
 <script> 
 	let markers = [];
 	let spotsArray =  <?php echo json_encode($spot); ?>; 	
 	let mapLegendArray =  <?php echo json_encode($ml); ?>; 	
-	let blueMarker =<?php echo json_encode($blue); ?>; 
-	let greenMarker =<?php echo json_encode($green); ?>; 
-	let redMarker =<?php echo json_encode($red); ?>; 
+	let blueMarker ='#6B7EC1'; 
+	let greenMarker ='#8DD38D'; 
+	let redMarker ='#C46A6A'; 
 
 	for(let i = 0; i < spotsArray.length ; i++){ 
 		let latitude = spotsArray[i].location.lat * 1;
@@ -92,16 +90,20 @@
 				color = mapLegendArray[j].marker_color;			
 			}
 		};
-		
+		var icon = {
+			path: "M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z",
+			fillColor: eval(color+'Marker'),
+			fillOpacity: 1,
+			strokeWeight: 0,
+			scale: 0.06
+		}
 		marker = 
 			{	
 				coords:{lat: latitude, lng: longtitude},
-				content: '<h3>'+heading+'</h3> <p>'+description+'</p>',
-				icon: {				
-					url: eval(color + "Marker")
-				  }			
+				content: '<h3>'+heading+'</h3> <p>'+description+'</p>',		
+				icon: icon,				
 			}		
 		markers.push(marker);
-		
+		console.log(color);
  	} 
 </script>  
