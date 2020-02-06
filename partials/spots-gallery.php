@@ -5,7 +5,7 @@
 
 	<!-- heading -->
 	<div class="heading container">
-		<h3><?php the_field('fs_heading'); ?> </h3>
+		<h3 class="featured"><?php the_field('fs_heading');?></h3>
 	</div>
 
 	<!-- spots navbar -->
@@ -65,13 +65,14 @@
 <?php 
 	$spot = get_field('add_location_repeater');
 	$ml = get_field('ml_marker_name_repeater');
-
+	// $hd = get_field('fs_heading');
 ?>
 
 <script> 
 	let markers = [];
 	let spotsArray =  <?php echo json_encode($spot); ?>; 	
 	let mapLegendArray =  <?php echo json_encode($ml); ?>; 	
+	// let featuredHeading =  <?php echo json_encode($hd); ?>; 
 	let blueMarker ='#6B7EC1'; 
 	let greenMarker ='#8DD38D'; 
 	let redMarker ='#C46A6A'; 
@@ -104,6 +105,5 @@
 				icon: icon,				
 			}		
 		markers.push(marker);
-		console.log(color);
  	} 
 </script>  

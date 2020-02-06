@@ -19,6 +19,8 @@ function initMap(location, zoomLevel) {
     }
     let map = new google.maps.Map(document.getElementById('map'), options);
     let lastWindow=null;
+    let currentMarker=null;
+
     //define marker 
     
     function addMarker(markerInfo) {   
@@ -26,23 +28,53 @@ function initMap(location, zoomLevel) {
             position: markerInfo.coords,
             map: map,  
             icon: markerInfo.icon,
-            labelContent:markerInfo.labelContent,
+            // labelContent:markerInfo.labelContent,
         });      
         let infowindow = new google.maps.InfoWindow({
             content: markerInfo.content,       
         });
-        // marker onclick
-        marker.addListener('click', function() {         
-            if (lastWindow) {
-                lastWindow.close();
-            }
-            infowindow.open(map, this);
-            lastWindow=infowindow;
-            map.setZoom(16);
-            map.panTo(marker.getPosition());
-                 
-        });
+
+          marker.addListener('click', function() {         
+        if (lastWindow) {
+            lastWindow.close();
+        }
+
+        // if (currentMarker != null) {
+        //     currentMarker.setIcon('https://www.google.com/mapfiles/marker_red.png');
+        //     currentMarker = null;
+        // };
+        // currentMarker = marker;
+        // marker.setIcon('https://www.google.com/mapfiles/marker_green.png');
+
+
+
+        infowindow.open(map, this);
+        lastWindow=infowindow;
+        map.setZoom(15);
+        map.panTo(marker.getPosition());
+
+    });
+
     }
+
+
+  
+
+    // marker.addListener('click', function() {         
+    //     if (lastWindow) {
+    //         lastWindow.close();
+    //     }
+    //     marker.icon.scale = 0.5;
+    //     infowindow.open(map, this);
+    //     lastWindow=infowindow;
+    //     map.setZoom(15);
+    //     map.panTo(marker.getPosition());
+
+    //     console.log(marker.icon.scale);
+    // });
+
+
+
     //loop add markers 
     for( let i=0; i < markers.length; i++) {
         addMarker(markers[i]);

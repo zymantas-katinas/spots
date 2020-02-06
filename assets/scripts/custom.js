@@ -77,7 +77,12 @@ function filterCity(c) {
         };     
     makeTwoColums();
     RemoveLoadMore();
+    setHeadingCity(cityName);
 } 
+
+
+
+
 
 //  change gallery layout accordingly;
 function makeTwoColums(){
@@ -114,7 +119,6 @@ function RemoveLoadMore(){
         gallery.classList.add("show-less");
     }
 }
-console.log("as");
 // SELECT CATEGORY (cafe, co-working, outside)
 function filterSelection(filter) {
     // active city
@@ -139,10 +143,52 @@ function filterSelection(filter) {
         category[i].addEventListener("click", function(){
             this.classList.add("underline");
         });
+        // setHeadingSpot(category[i]);
+        
     }
+    // console.log(filter)
+    setHeadingSpot(filter);
     makeTwoColums();
     RemoveLoadMore();
 };
+
+// change city in featured heading 
+function setHeadingCity(city){
+
+    let featuredHeading = document.querySelector(".featured").innerHTML;
+    let featuredHeadingArray = featuredHeading.split(" ");
+    let cityPos = featuredHeadingArray.length - 1;
+    let headingArr = featuredHeadingArray.slice(0, cityPos) + " " + city;
+    let headingDone = headingArr.split(",").join(" "); 
+    document.querySelector(".featured").innerHTML = headingDone;
+}
+
+// change  spot type in featured heading
+function setHeadingSpot(spot){
+    let spotName = spot.split(".");
+    let spotIn = ""
+    if(spotName[1] === "Cafes"){
+        spotIn = spotName[1];
+    } else {
+        spotIn = spotName[1] + " Spots";
+    }
+    let featuredHeading = document.querySelector(".featured").innerHTML;
+    let featuredHeadingArray = featuredHeading.split(" ");
+    featuredHeadingArray[1] = spotIn;
+    if (featuredHeadingArray.length == 4) {
+        let headingDone = featuredHeadingArray.join(" "); 
+        document.querySelector(".featured").innerHTML = headingDone;
+    } else {
+
+        let value = featuredHeadingArray.splice(2, 1);  
+        featuredHeadingArray = featuredHeadingArray.filter(function(item) {
+            return item !== value
+        })
+        let headingDone = featuredHeadingArray.join(" "); 
+        document.querySelector(".featured").innerHTML = headingDone;
+    }
+
+}
 
 // set default map location
 initMap(Vilnius, 14);
