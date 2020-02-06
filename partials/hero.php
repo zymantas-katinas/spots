@@ -2,7 +2,9 @@
 
 <section id="hero-section">
 	<div class="hero">
-		
+
+
+
 		<?php 
 			$image = get_field('hb_background_image');
 		?>
